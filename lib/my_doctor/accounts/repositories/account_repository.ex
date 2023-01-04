@@ -1,4 +1,4 @@
-defmodule MyDoctor.Accounts do
+defmodule MyDoctor.Accounts.Repositories.AccountRepository do
   @moduledoc """
   The Accounts context.
   """
@@ -6,7 +6,7 @@ defmodule MyDoctor.Accounts do
   import Ecto.Query, warn: false
   alias MyDoctor.Repo
 
-  alias MyDoctor.Accounts.User
+  alias MyDoctor.Accounts.Entities.User
 
   @doc """
   Returns the list of users.
