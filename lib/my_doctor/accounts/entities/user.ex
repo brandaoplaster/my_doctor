@@ -1,4 +1,4 @@
-defmodule MyDoctor.Accounts.User do
+defmodule MyDoctor.Accounts.Entities.User do
   use Ecto.Schema
   import Ecto.Changeset
 
