@@ -57,8 +57,31 @@ defmodule MyDoctor.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+
+      # Code quality
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.14.4", only: :test}
+      {:excoveralls, "~> 0.14.4", only: :test},
+      {:sobelow, "~> 0.11", only: :dev},
+      {:mock, "~> 0.3.0", only: :test},
+
+      # Authentication
+      {:argon2_elixir, "~> 3.0"},
+      {:guardian, "~> 2.3"},
+
+      # Email
+      {:bamboo, "~> 2.2"},
+      {:bamboo_smtp, "~> 4.2"},
+
+      # Database
+      {:mongodb_driver, "~> 1.0"},
+      {:poolboy, "~> 1.5"},
+
+      # Cache/Redis
+      {:redix, "~> 1.1"},
+
+      # Utilities
+      {:castore, "~> 1.0"},
+      {:timex, "~> 3.7"}
     ]
   end
 
