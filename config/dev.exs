@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :my_doctor, MyDoctor.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "my_doctor_dev",
+  username: System.get_env("POSTGRES_USER") || "postgres",
+  password: System.get_env("POSTGRES_PASSWORD") || "postgres",
+  hostname: System.get_env("POSTGRES_HOST") || "my_doctor_db",
+  database: System.get_env("POSTGRES_DB") || "my_doctor_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
