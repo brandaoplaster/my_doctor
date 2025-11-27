@@ -22,7 +22,8 @@ defmodule MyDoctorWeb do
       use Phoenix.Controller, namespace: MyDoctorWeb
 
       import Plug.Conn
-      import MyDoctorWeb.Gettext
+      # import MyDoctorWeb.Gettext
+      use Gettext, backend: MyDoctorWeb.Gettext
       alias MyDoctorWeb.Router.Helpers, as: Routes
     end
   end
@@ -34,6 +35,8 @@ defmodule MyDoctorWeb do
         namespace: MyDoctorWeb
 
       # Import convenience functions from controllers
+      use Gettext, backend: MyDoctorWeb.Gettext
+
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 

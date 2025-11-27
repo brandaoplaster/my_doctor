@@ -20,5 +20,5 @@ defmodule MyDoctorWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :my_doctor
+  use Gettext.Backend, otp_app: :my_doctor
 end
