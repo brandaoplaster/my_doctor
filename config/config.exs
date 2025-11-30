@@ -10,6 +10,10 @@ import Config
 config :my_doctor,
   ecto_repos: [MyDoctor.Repo]
 
+config :my_doctor,
+  ecto_repos: [MyDoctor.Repo],
+  generators: [timestamp_type: :utc_datetime, binary_id: true]
+
 # Configures the endpoint
 config :my_doctor, MyDoctorWeb.Endpoint,
   url: [host: "localhost"],
