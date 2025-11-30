@@ -3,11 +3,9 @@ defmodule MyDoctor.Accounts.Services.UserConfirmation do
   User email confirmation service.
   """
 
-  import Ecto.Query
-
   alias MyDoctor.Accounts.Notifiers.EmailNotifier
   alias MyDoctor.Accounts.Repositories.UserTokenRepository
-  alias MyDoctor.Accounts.Schemas.{User, UserToken}
+  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Accounts.Services.TokenGenerator
   alias MyDoctor.Repo
 
