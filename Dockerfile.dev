@@ -1,0 +1,31 @@
+FROM elixir:1.15.7-alpine
+
+RUN apk add --no-cache \
+    build-base \
+    git \
+    postgresql-client \
+    inotify-tools \
+    curl
+
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+RUN addgroup -g ${GROUP_ID} -S elixir && \
+    adduser -u ${USER_ID} -S elixir -G elixir -s /bin/sh
+
+WORKDIR /app
+RUN chown -R elixir:elixir /app
+
+USER elixir
+
+RUN mix local.hex --force && \
+    mix local.rebar --force
+
+COPY --chown=elixir:elixir mix.exs mix.lock ./
+
+RUN mix deps.get
+
+COPY --chown=elixir:elixir . .
+
+EXPOSE 4000
+
+CMD ["mix", "phx.server"]
