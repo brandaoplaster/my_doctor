@@ -31,13 +31,6 @@ defmodule MyDoctor.Accounts.Repositories.UserRepository do
   end
 
   @doc """
-  Updates a user.
-  """
-  def update(user, changeset) do
-    Repo.update(changeset)
-  end
-
-  @doc """
   Deletes a user.
   """
   def delete(user) do
