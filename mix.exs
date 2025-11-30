@@ -82,7 +82,9 @@ defmodule MyDoctor.MixProject do
 
       # Utilities
       {:castore, "~> 1.0"},
-      {:timex, "~> 3.7"}
+      {:timex, "~> 3.7"},
+      {:ex_machina, "~> 2.8.0", only: [:dev, :test]},
+      {:faker, "~> 0.18", only: [:dev, :test]}
     ]
   end
 
