@@ -4,24 +4,28 @@ defmodule MyDoctor.Repo.Migrations.CreateUserAuthTables do
   def change do
     execute "CREATE EXTENSION IF NOT EXISTS citext", ""
 
-    create table(:user) do
+    create table(:users, primary_key: false) do
+      add :id, :binary_id, primary_key: true
       add :email, :citext, null: false
       add :hashed_password, :string, null: false
-      add :confirmed_at, :naive_datetime
-      timestamps()
+      add :confirmed_at, :utc_datetime
+
+      timestamps(type: :utc_datetime)
     end
 
-    create unique_index(:user, [:email])
+    create unique_index(:users, [:email])
 
-    create table(:user_tokens) do
-      add :user_id, references(:user, on_delete: :delete_all), null: false
+    create table(:users_tokens, primary_key: false) do
+      add :id, :binary_id, primary_key: true
+      add :user_id, references(:users, type: :binary_id, on_delete: :delete_all), null: false
       add :token, :binary, null: false
       add :context, :string, null: false
       add :sent_to, :string
-      timestamps(updated_at: false)
+
+      timestamps(type: :utc_datetime, updated_at: false)
     end
 
-    create index(:user_tokens, [:user_id])
-    create unique_index(:user_tokens, [:context, :token])
+    create index(:users_tokens, [:user_id])
+    create unique_index(:users_tokens, [:context, :token])
   end
 end
