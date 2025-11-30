@@ -113,15 +113,6 @@ defmodule MyDoctor.Accounts.Repositories.UserTokenRepository do
   end
 
   @doc """
-  Creates a token.
-  """
-  def create(attrs) do
-    %UserToken{}
-    |> UserToken.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
   Deletes a token.
   """
   def delete(token) do
@@ -131,8 +122,8 @@ defmodule MyDoctor.Accounts.Repositories.UserTokenRepository do
   @doc """
   Deletes all tokens for a user and specific contexts.
   """
-  def delete_user_tokens(user, contexts) do
-    user_and_contexts_query(user, contexts)
+  def delete_by_token_and_context(token, context) do
+    UserToken.token_and_context_query(token, context)
     |> Repo.delete_all()
   end
 
