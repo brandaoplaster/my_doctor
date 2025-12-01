@@ -1,10 +1,10 @@
 defmodule MyDoctor.Accounts.Services.PasswordResetTest do
   use MyDoctor.DataCase
 
+  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Accounts.Services.PasswordReset
   alias MyDoctor.Accounts.Services.TokenGenerator
   alias MyDoctor.Accounts.Services.UserAuthentication
-  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Factory
 
   describe "deliver_reset_instructions/3" do
