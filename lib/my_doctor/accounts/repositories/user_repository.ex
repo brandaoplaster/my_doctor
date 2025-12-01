@@ -29,18 +29,4 @@ defmodule MyDoctor.Accounts.Repositories.UserRepository do
     |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
-
-  @doc """
-  Updates a user.
-  """
-  def update(user, changeset) do
-    Repo.update(changeset)
-  end
-
-  @doc """
-  Deletes a user.
-  """
-  def delete(user) do
-    Repo.delete(user)
-  end
 end

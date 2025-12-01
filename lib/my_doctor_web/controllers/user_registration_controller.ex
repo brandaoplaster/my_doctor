@@ -2,7 +2,7 @@ defmodule MyDoctorWeb.UserRegistrationController do
   use MyDoctorWeb, :controller
 
   alias MyDoctor.Accounts
-  alias MyDoctor.Accounts.User
+  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctorWeb.UserAuth
 
   def new(conn, _params) do
