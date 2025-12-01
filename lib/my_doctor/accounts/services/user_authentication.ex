@@ -4,7 +4,6 @@ defmodule MyDoctor.Accounts.Services.UserAuthentication do
   """
 
   alias MyDoctor.Accounts.Repositories.{UserRepository, UserTokenRepository}
-  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Accounts.Services.TokenGenerator
   alias MyDoctor.Accounts.Validators.PasswordValidator
   alias MyDoctor.Repo
@@ -44,7 +43,8 @@ defmodule MyDoctor.Accounts.Services.UserAuthentication do
   Deletes the session token.
   """
   def delete_session_token(token) do
-    UserTokenRepository.delete_user_tokens_by_token(token, "session")
+    UserTokenRepository.delete_by_token_and_context(token, "session")
+
     :ok
   end
 end

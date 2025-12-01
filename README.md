@@ -81,6 +81,9 @@ docker compose run --rm my_doctor mix ecto.reset
 # Run code quality checks
 docker compose run --rm my_doctor mix credo --strict
 docker compose run --rm my_doctor mix sobelow
+
+# Generating report coveralls
+docker compose run --rm my_doctor mix coveralls.html
 ```
 
 ## 🛠️ Development

@@ -5,7 +5,7 @@ defmodule MyDoctor.Accounts.Services.PasswordReset do
 
   alias MyDoctor.Accounts.Notifiers.EmailNotifier
   alias MyDoctor.Accounts.Repositories.UserTokenRepository
-  alias MyDoctor.Accounts.Schemas.{User, UserToken}
+  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Accounts.Services.TokenGenerator
   alias MyDoctor.Repo
 

@@ -4,7 +4,7 @@ defmodule MyDoctor.Accounts.Services.PasswordUpdate do
   """
 
   alias MyDoctor.Accounts.Repositories.UserTokenRepository
-  alias MyDoctor.Accounts.Schemas.{User, UserToken}
+  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Repo
 
   @doc """

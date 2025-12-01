@@ -3,55 +3,49 @@ services:
     image: postgres:13
     container_name: my_doctor_db
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "${POSTGRES_PORT}:5432"
-    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 10s
+    env_file:
+      - .env
     networks:
       - my_doctor_network
 
   my_doctor:
     build:
       context: .
-      target: development
+      dockerfile: Dockerfile.dev
+      args:
+        USER_ID: ${USER_ID:-1000}
+        GROUP_ID: ${GROUP_ID:-1000}
     container_name: my_doctor
+    command: sh ./scripts/dev-start.sh
     depends_on:
       my_doctor_db:
         condition: service_healthy
-    environment:
-      MIX_ENV: dev
-      DATABASE_URL: ${DATABASE_URL}
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-      PHX_HOST: ${PHX_HOST}
     ports:
       - "${PHX_PORT}:4000"
     volumes:
       - .:/app
       - deps_cache:/app/deps
       - build_cache:/app/_build
-    restart: unless-stopped
     env_file:
       - .env
     networks:
       - my_doctor_network
     stdin_open: true
     tty: true
-    command: ["/app/scripts/dev-start.sh"]
 
 networks:
   my_doctor_network:
-    driver: bridge
 
 volumes:
   postgres_data:
