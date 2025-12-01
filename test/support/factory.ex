@@ -1,5 +1,6 @@
 defmodule MyDoctor.Factory do
   use ExMachina.Ecto, repo: MyDoctor.Repo
 
-  use MyDoctor.UserFactory
+  use Factories.UserFactory
+  use Factories.AppointmentFactory
 end

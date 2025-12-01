@@ -1,4 +1,4 @@
-defmodule MyDoctor.UserFactory do
+defmodule Factories.UserFactory do
   alias MyDoctor.Accounts.Schemas.User
 
   defmacro __using__(_opts) do
