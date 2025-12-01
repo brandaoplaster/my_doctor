@@ -1,4 +1,4 @@
-defmodule MyDoctor.Repositories.UserAuthenticationTest do
+defmodule MyDoctor.Accounts.Services.UserAuthenticationTest do
   use MyDoctor.DataCase
 
   alias MyDoctor.Accounts.Services.UserAuthentication

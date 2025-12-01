@@ -1,8 +1,8 @@
-defmodule MyDoctor.Repositories.TokenGeneratorTest do
+defmodule MyDoctor.Accounts.Services.TokenGeneratorTest do
   use MyDoctor.DataCase
 
-  alias MyDoctor.Accounts.Services.TokenGenerator
   alias MyDoctor.Accounts.Schemas.UserToken
+  alias MyDoctor.Accounts.Services.TokenGenerator
   alias MyDoctor.Factory
 
   describe "build_session_token/1" do

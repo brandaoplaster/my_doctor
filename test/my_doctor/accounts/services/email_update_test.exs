@@ -1,8 +1,8 @@
 defmodule MyDoctor.Accounts.Services.EmailUpdateTest do
   use MyDoctor.DataCase
 
-  alias MyDoctor.Accounts.Services.EmailUpdate
   alias MyDoctor.Accounts.Schemas.User
+  alias MyDoctor.Accounts.Services.EmailUpdate
   alias MyDoctor.Factory
 
   describe "change_email/2" do

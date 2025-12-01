@@ -1,8 +1,8 @@
-defmodule MyDoctor.Repositories.UserRepositoryTest do
+defmodule MyDoctor.Accounts.Repositories.UserRepositoryTest do
   use MyDoctor.DataCase
 
-  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Accounts.Repositories.UserRepository
+  alias MyDoctor.Accounts.Schemas.User
   alias MyDoctor.Factory
 
   describe "get_by_email/1" do
