@@ -43,7 +43,8 @@ defmodule MyDoctor.Accounts.Services.UserAuthentication do
   Deletes the session token.
   """
   def delete_session_token(token) do
-    UserTokenRepository.delete_by_token_and_context("session", token)
+    UserTokenRepository.delete_by_token_and_context(token, "session")
+
     :ok
   end
 end
