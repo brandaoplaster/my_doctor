@@ -113,13 +113,6 @@ defmodule MyDoctor.Accounts.Repositories.UserTokenRepository do
   end
 
   @doc """
-  Deletes a token.
-  """
-  def delete(token) do
-    Repo.delete(token)
-  end
-
-  @doc """
   Deletes all tokens for a user and specific contexts.
   """
   def delete_by_token_and_context(token, context) do
