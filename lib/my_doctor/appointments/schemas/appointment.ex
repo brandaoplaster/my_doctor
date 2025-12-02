@@ -3,6 +3,10 @@ defmodule MyDoctor.Appointments.Schemas.Appointment do
   import Ecto.Changeset
 
   alias MyDoctor.Accounts.Schemas.User
+  alias MyDoctor.Appointments.Validators.DateValidator
+  alias MyDoctor.Appointments.Validators.RelationshipValidator
+
+  @required_fields ~w(:date, :user_id, :provider_id, :status)a
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -17,10 +21,12 @@ defmodule MyDoctor.Appointments.Schemas.Appointment do
 
   def changeset(appointment, attrs) do
     appointment
-    |> cast(attrs, :user_id, :provider_id)
+    |> cast(attrs, @required_fields)
     |> foreign_key_constraint(:user_id)
     |> foreign_key_constraint(:provider_id)
-    |> validate_required([:date, :user_id, :provider_id, :status])
+    |> validate_required(@required_fields)
     |> validate_inclusion(:status, ["pending", "confirmed", "cancelled", "completed"])
+    |> DateValidator.validate_date_not_in_past()
+    |> RelationshipValidator.validate_user_not_provider()
   end
 end
