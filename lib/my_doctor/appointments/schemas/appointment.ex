@@ -6,11 +6,11 @@ defmodule MyDoctor.Appointments.Schemas.Appointment do
   alias MyDoctor.Appointments.Validators.DateValidator
   alias MyDoctor.Appointments.Validators.RelationshipValidator
 
-  @required_fields ~w(:date, :user_id, :provider_id, :status)a
+  @required_fields ~w(date user_id provider_id status)a
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
-  schema "appointment" do
+  schema "appointments" do
     field :status, :string, default: "pending"
     field :date, :naive_datetime
     belongs_to :user, User, foreign_key: :user_id, type: :binary_id
