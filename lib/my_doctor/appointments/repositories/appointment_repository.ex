@@ -9,17 +9,9 @@ defmodule MyDoctor.Appointments.Repositories.AppointmentRepository do
 
   def get!(id), do: Repo.get!(Appointment, id)
 
-  def create(attrs \\ %{}) do
-    %Appointment{}
-    |> Appointment.changeset(attrs)
-    |> Repo.insert()
-  end
+  def insert(changeset), do: Repo.insert(changeset)
 
-  def update(%Appointment{} = appointmemnt, attrs) do
-    appointmemnt
-    |> Appointment.changeset(attrs)
-    |> Repo.update()
-  end
+  def update(changeset), do: Repo.update(changeset)
 
-  def delete(%Appointment{} = appointmemnt), do: Repo.delete(appointmemnt)
+  def delete(struct), do: Repo.delete(struct)
 end
