@@ -11,7 +11,8 @@ defmodule MyDoctor.Accounts do
     PasswordUpdate,
     UserAuthentication,
     UserConfirmation,
-    UserRegistration
+    UserRegistration,
+    DeleteUser
   }
 
   defdelegate get_user!(id), to: UserRepository, as: :get!
@@ -63,4 +64,6 @@ defmodule MyDoctor.Accounts do
   defdelegate deliver_update_email_instructions(user, current_email, url_fun),
     to: EmailUpdate,
     as: :deliver_update_instructions
+
+  defdelegate delete_user(id), to: DeleteUser, as: :execute
 end
