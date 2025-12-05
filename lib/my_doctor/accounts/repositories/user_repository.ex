@@ -21,6 +21,8 @@ defmodule MyDoctor.Accounts.Repositories.UserRepository do
     Repo.get!(User, id)
   end
 
+  def get(id), do: Repo.get(User, id)
+
   @doc """
   Creates a user.
   """
@@ -29,4 +31,6 @@ defmodule MyDoctor.Accounts.Repositories.UserRepository do
     |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
+
+  def delete(struct), do: Repo.delete(struct)
 end
