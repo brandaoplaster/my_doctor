@@ -80,6 +80,12 @@ defmodule MyDoctorWeb.Router do
     get "/user/settings/confirm_email/:token", UserSettingsController, :confirm_email
   end
 
+  scope "/api", MyDoctorWeb.Api, as: :api do
+    pipe_through :api
+
+    resources "/appointments", AppointmentController
+  end
+
   scope "/", MyDoctorWeb do
     pipe_through [:browser]
 
