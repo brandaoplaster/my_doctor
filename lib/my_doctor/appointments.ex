@@ -3,11 +3,14 @@ defmodule MyDoctor.Appointments do
   The Apointments context - Boundary/Facade.
   """
 
-  alias MyDoctor.Appointments.Repositories.AppointmentRepository
+  alias MyDoctor.Appointments.Services.CreateAppointment
+  alias MyDoctor.Appointments.Services.UpdateAppointment
+  alias MyDoctor.Appointments.Services.DeleteAppointment
+  alias MyDoctor.Appointments.Services.QueryAppointment
 
-  defdelegate get_appointment!(id), to: AppointmentRepository, as: :get!
-  defdelegate list_all_appointments(), to: AppointmentRepository, as: :list_all
-  defdelegate create_appointment(attrs), to: AppointmentRepository, as: :create
-  defdelegate update_appointment(appointment, attrs), to: AppointmentRepository, as: :update
-  defdelegate delete_appointment(id), to: AppointmentRepository, as: :delete
+  defdelegate get_appointment!(id), to: QueryAppointment, as: :get!
+  defdelegate list_all_appointments(), to: QueryAppointment, as: :list_all
+  defdelegate create_appointment(attrs), to: CreateAppointment, as: :execute
+  defdelegate update_appointment(id, attrs), to: UpdateAppointment, as: :execute
+  defdelegate delete_appointment(id), to: DeleteAppointment, as: :execute
 end
