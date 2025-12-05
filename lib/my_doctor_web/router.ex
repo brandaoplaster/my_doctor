@@ -84,6 +84,7 @@ defmodule MyDoctorWeb.Router do
     pipe_through :api
 
     resources "/appointments", AppointmentController
+    resources "/users", UserController, exept: [:create]
   end
 
   scope "/", MyDoctorWeb do
