@@ -9,6 +9,8 @@ defmodule MyDoctor.Appointments.Repositories.AppointmentRepository do
 
   def get!(id), do: Repo.get!(Appointment, id)
 
+  def get(id), do: Repo.get(Appointment, id)
+
   def insert(changeset), do: Repo.insert(changeset)
 
   def update(changeset), do: Repo.update(changeset)
