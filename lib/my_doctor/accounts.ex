@@ -3,19 +3,22 @@ defmodule MyDoctor.Accounts do
   The Accounts context - Boundary/Facade.
   """
 
-  alias MyDoctor.Accounts.Repositories.UserRepository
+  # alias MyDoctor.Accounts.Repositories.UserRepository
 
   alias MyDoctor.Accounts.Services.{
+    CreateUser,
+    DeleteUser,
     EmailUpdate,
     PasswordReset,
     PasswordUpdate,
+    QueryUser,
     UserAuthentication,
     UserConfirmation,
     UserRegistration
   }
 
-  defdelegate get_user!(id), to: UserRepository, as: :get!
-  defdelegate get_user_by_email(email), to: UserRepository, as: :get_by_email
+  # defdelegate get_user!(id), to: UserRepository, as: :get!
+  defdelegate get_user_by_email(email), to: QueryUser, as: :get_by_email
 
   defdelegate register_user(attrs), to: UserRegistration, as: :register
 
@@ -63,4 +66,10 @@ defmodule MyDoctor.Accounts do
   defdelegate deliver_update_email_instructions(user, current_email, url_fun),
     to: EmailUpdate,
     as: :deliver_update_instructions
+
+  defdelegate delete_user(id), to: DeleteUser, as: :execute
+  defdelegate create_user(user), to: CreateUser, as: :execute
+  defdelegate list_all(), to: QueryUser, as: :list_all
+  defdelegate get(id), to: QueryUser, as: :get
+  defdelegate get!(id), to: QueryUser, as: :get!
 end

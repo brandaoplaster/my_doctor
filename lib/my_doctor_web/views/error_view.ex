@@ -1,6 +1,18 @@
 defmodule MyDoctorWeb.ErrorView do
   use MyDoctorWeb, :view
 
+  def render("400.json", _assigns) do
+    %{error: "Invalid ID format"}
+  end
+
+  def render("404.json", _assigns) do
+    %{error: "Not found"}
+  end
+
+  def render("403.json", _assigns) do
+    %{error: "Unauthorized"}
+  end
+
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   # def render("500.html", _assigns) do

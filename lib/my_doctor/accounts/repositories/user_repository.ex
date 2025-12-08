@@ -21,6 +21,18 @@ defmodule MyDoctor.Accounts.Repositories.UserRepository do
     Repo.get!(User, id)
   end
 
+  def get(id) do
+    with {:ok, uuid} <- Ecto.UUID.cast(id),
+         %User{} = user <- Repo.get(User, uuid) do
+      {:ok, user}
+    else
+      :error -> {:error, :invalid_id}
+      nil -> {:error, :not_found}
+    end
+  end
+
+  def list_all, do: Repo.all(User)
+
   @doc """
   Creates a user.
   """
@@ -29,4 +41,8 @@ defmodule MyDoctor.Accounts.Repositories.UserRepository do
     |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
+
+  def insert(struct), do: Repo.insert(struct)
+
+  def delete(struct), do: Repo.delete(struct)
 end

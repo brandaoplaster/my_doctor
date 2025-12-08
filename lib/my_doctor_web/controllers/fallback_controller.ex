@@ -1,5 +1,12 @@
-defmodule MyDoctorWeb.Controllers.FallbackController do
+defmodule MyDoctorWeb.FallbackController do
   use MyDoctorWeb, :controller
+
+  def call(conn, {:error, :invalid_id}) do
+    conn
+    |> put_status(:bad_request)
+    |> put_view(MyDoctorWeb.ErrorView)
+    |> render("400.json")
+  end
 
   def call(conn, {:error, :not_found}) do
     conn

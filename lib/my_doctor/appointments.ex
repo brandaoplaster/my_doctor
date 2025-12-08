@@ -4,9 +4,9 @@ defmodule MyDoctor.Appointments do
   """
 
   alias MyDoctor.Appointments.Services.CreateAppointment
-  alias MyDoctor.Appointments.Services.UpdateAppointment
   alias MyDoctor.Appointments.Services.DeleteAppointment
   alias MyDoctor.Appointments.Services.QueryAppointment
+  alias MyDoctor.Appointments.Services.UpdateAppointment
 
   defdelegate get_appointment!(id), to: QueryAppointment, as: :get!
   defdelegate list_all_appointments(), to: QueryAppointment, as: :list_all

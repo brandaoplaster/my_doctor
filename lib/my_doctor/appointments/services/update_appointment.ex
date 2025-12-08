@@ -3,8 +3,8 @@ defmodule MyDoctor.Appointments.Services.UpdateAppointment do
   Appointment update service.
   """
 
-  alias MyDoctor.Appointments.Schemas.Appointment
   alias MyDoctor.Appointments.Repositories.AppointmentRepository
+  alias MyDoctor.Appointments.Schemas.Appointment
 
   def execute(id, attrs) do
     appointment = AppointmentRepository.get!(id)

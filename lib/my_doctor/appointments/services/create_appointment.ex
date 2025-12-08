@@ -3,8 +3,8 @@ defmodule MyDoctor.Appointments.Services.CreateAppointment do
   Appointment registration service.
   """
 
-  alias MyDoctor.Appointments.Schemas.Appointment
   alias MyDoctor.Appointments.Repositories.AppointmentRepository
+  alias MyDoctor.Appointments.Schemas.Appointment
 
   def execute(attrs) do
     attrs = Map.update!(attrs, "date", &format_hour/1)
