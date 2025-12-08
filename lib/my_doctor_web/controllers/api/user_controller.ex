@@ -4,12 +4,14 @@ defmodule MyDoctorWeb.Api.UserController do
   alias MyDoctor.Accounts
   alias MyDoctor.Accounts.Schemas.User
 
+  action_fallback MyDoctorWeb.FallbackController
+
   def index(conn, _parmas) do
-    users = Accounts.list_all_users()
+    users = Accounts.list_all()
     render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"user", params}) do
+  def create(conn, %{"user" => params}) do
     with {:ok, %User{} = user} <- Accounts.create_user(params) do
       conn
       |> put_status(:created)
@@ -19,8 +21,8 @@ defmodule MyDoctorWeb.Api.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    with {:ok, %User{} = user} <- Accounts.get_user!(id) do
-      render(conn, "show.json", user: user)
+    with {:ok, user} <- Accounts.get(id) do
+      render(conn, :show, user: user)
     end
   end
 
