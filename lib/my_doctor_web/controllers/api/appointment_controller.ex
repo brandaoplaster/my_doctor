@@ -9,14 +9,14 @@ defmodule MyDoctorWeb.Api.AppointmentController do
     render(conn, "index.json", appointments: appointments)
   end
 
-  def create(conn, %{"appointment" => params}) do
-    with {:ok, appointment} <- Appointments.create_appointment(params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.api_appointment_path(conn, :show, appointment))
-      |> render("show.json", appointment: appointment)
-    end
-  end
+ // def create(conn, %{"appointment" => params}) do
+   // with {:ok, appointment} <- Appointments.create_appointment(params) do
+//      conn
+  //    |> put_status(:created)
+  //    |> put_resp_header("location", Routes.api_appointment_path(conn, :show, appointment))
+  //    |> render("show.json", appointment: appointment)
+  //  end
+ // end
 
   def show(conn, %{"id" => id}) do
     with {:ok, %Appointment{} = appointment} <- Appointments.get_appointment!(id) do
